@@ -6,7 +6,7 @@ import api from '../services/api';
 export default function Register() {
   const [form, setForm] = useState({ nombre: '', email: '', password: '', rol: 'CLIENTE' });
   const [showPwd, setShowPwd] = useState(false);
-  const [error,   setError]   = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -56,14 +56,14 @@ export default function Register() {
           <h1 className="text-3xl font-bold text-white mb-1">Crear cuenta</h1>
           <p className="text-slate-400">Unite a la comunidad deportiva</p>
         </div>
- 
+
         <div style={{ padding: '2rem' }} className="card shadow-lg">
           {error && (
             <div style={{ padding: '0.65rem' }} className="mb-6 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
               {error}
             </div>
           )}
- 
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Nombre completo</label>
@@ -73,7 +73,7 @@ export default function Register() {
                   placeholder="Juan Pérez" className="input-field !pl-11" />
               </div>
             </div>
- 
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
               <div className="relative">
@@ -82,7 +82,7 @@ export default function Register() {
                   placeholder="tu@email.com" className="input-field !pl-11" />
               </div>
             </div>
- 
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Contraseña</label>
               <div className="relative">
@@ -96,7 +96,7 @@ export default function Register() {
                 </button>
               </div>
             </div>
- 
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Tipo de cuenta</label>
               <div className="relative">
@@ -108,14 +108,14 @@ export default function Register() {
                 </select>
               </div>
             </div>
- 
+
             <div className="pt-2">
               <button type="submit" disabled={loading} className="btn-primary w-full py-3 disabled:opacity-60 hover:scale-[1.02] active:scale-[0.98] transition-all">
                 {loading ? 'Creando cuenta…' : 'Crear cuenta'}
               </button>
             </div>
           </form>
- 
+
           <p style={{ marginTop: '1.5rem' }} className="text-center text-sm text-slate-400">
             ¿Ya tenés cuenta?{' '}
             <Link to="/login" className="text-green-400 hover:text-green-300 font-medium">

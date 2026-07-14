@@ -5,12 +5,12 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 
 export default function Login() {
-  const [form, setForm]       = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [showPwd, setShowPwd] = useState(false);
-  const [error, setError]     = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login }  = useAuth();
-  const navigate   = useNavigate();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -23,10 +23,10 @@ export default function Login() {
       // Decode basic info from token payload (base64 middle section)
       const payload = JSON.parse(atob(data.access_token.split('.')[1]));
       login(data.access_token, {
-        id:     payload.sub,
-        rol:    payload.rol,
+        id: payload.sub,
+        rol: payload.rol,
         nombre: payload.nombre ?? '',
-        email:  form.email,
+        email: form.email,
       });
       navigate(payload.rol === 'DUENIO' ? '/mi-complejo' : '/');
     } catch (err) {
@@ -53,7 +53,7 @@ export default function Login() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="w-full max-w-md fade-in">
+      <div className="w-full max-w-md px-4 sm:px-0 fade-in">
         {/* Logo */}
         <div style={{ marginBottom: '2.5rem' }} className="text-center">
           <div className="inline-flex items-center gap-2 mb-4">
@@ -65,7 +65,7 @@ export default function Login() {
           <h1 className="text-3xl font-bold text-white mb-1">Bienvenido de vuelta</h1>
           <p className="text-slate-400">Ingresá para reservar tu cancha</p>
         </div>
- 
+
         {/* Form Card */}
         <div style={{ padding: '2rem' }} className="card shadow-lg">
           {error && (
@@ -73,7 +73,7 @@ export default function Login() {
               {error}
             </div>
           )}
- 
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
@@ -87,7 +87,7 @@ export default function Login() {
                 />
               </div>
             </div>
- 
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">Contraseña</label>
               <div className="relative">
@@ -104,14 +104,14 @@ export default function Login() {
                 </button>
               </div>
             </div>
- 
+
             <div className="pt-2">
               <button type="submit" disabled={loading} className="btn-primary w-full py-3 disabled:opacity-60 hover:scale-[1.02] active:scale-[0.98] transition-all">
                 {loading ? 'Ingresando…' : 'Iniciar sesión'}
               </button>
             </div>
           </form>
- 
+
           <p style={{ marginTop: '1.5rem' }} className="text-center text-sm text-slate-400">
             ¿No tenés cuenta?{' '}
             <Link to="/register" className="text-green-400 hover:text-green-300 font-medium">
